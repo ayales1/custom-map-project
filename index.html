@@ -1,3 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Custom Map</title>
+    
+    <!-- Link to CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    
+    <!-- Link to Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
 <body>
-    <h1>If you see this, the page is loading correctly!</h1>
+    <h1>Welcome to My Custom Map</h1>
+    <p>This is a map showing my favorite location.</p>
+
+    <!-- Map Container -->
+    <div id="map" style="width: 600px; height: 400px;"></div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    
+    <script>
+        // Initialize the map and set its view to the new location with a custom zoom level
+        var map = L.map('map').setView([25.7617, -80.1918], 13); // Miami coordinates
+
+        // Add the map tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Add a marker at the new location
+        var marker = L.marker([25.7617, -80.1918]).addTo(map)
+            .bindPopup('This is Miami!')
+            .openPopup();
+    </script>
 </body>
+</html>
